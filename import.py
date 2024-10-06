@@ -57,7 +57,7 @@ def process_single_csv(file_path, file_name, stats):
         with open(temp_file_path, 'w', encoding='utf-8') as f:
             f.write(header_line)
             f.writelines(lines[1:])
-
+        logging.info(f"Writing complete.")
         # Read the CSV file into a DataFrame with tab delimiter
         df = pd.read_csv(
             temp_file_path,
@@ -69,6 +69,7 @@ def process_single_csv(file_path, file_name, stats):
             escapechar='\\',
             warn_bad_lines=True
         )
+        logging.info(f"Loading again complete.")
         # Remove the temporary file
         os.remove(temp_file_path)
 
